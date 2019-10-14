@@ -112,7 +112,7 @@ class Main extends PluginBase implements Listener{
     public function onKick($sender){
         $api = $this->getServer()->getPluginManager()->getPlugin("FormAPI");
         $form = $api->createCustomForm(Function (Player $sender, $data){
-            $this->getServer()->dispatchCommand(new ConsolseCommandSender(), "kick ".$args[1]." ". $args[2]);
+            $this->getServer()->dispatchCommand(new ConsoleCommandSender(), "kick ".$args[1]." ". $args[2]);
             $this->kick->set($sender->getName(), ["Name" => $args[1], "Reason" => $args[2]]);
             $this->kick->save();
             $this->createTask($sender);
@@ -128,7 +128,7 @@ class Main extends PluginBase implements Listener{
     public function onBanned($sender){
         $api = $this->getServer()->getPluginManager()->getPlugin("FormAPI");
         $form = $api->createCustomForm(Function (Player $sender, $data){
-            $this->getServer()->dispatchCommand(new ConsolseCommandSender(), "ban ".$args[1]." ". $args[2]);
+            $this->getServer()->dispatchCommand(new ConsoleeCommandSender(), "ban ".$args[1]." ". $args[2]);
             $this->banned->set($sender->getName(), ["Name" => $args[1], "Reason" => $args[2]]);
             $this->banned->save();
             $this->createTask($sender);
