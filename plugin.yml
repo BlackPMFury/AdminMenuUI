@@ -1,0 +1,20 @@
+name: AdminMenuUI
+main: AdminMenu\Menu\Main
+api:
+  - 3.0.0
+  - 3.2.0
+version: 1.0-BETA
+author: BlackPMFury
+commands:
+  adminui:
+    description: "AdminUI System"
+    usage: /adminui
+    permission: spnvn.adminui
+  AdminUI:
+    description: "AdminUI System"
+    usage: /adminui
+    permission: spnvn.adminui
+permissions:
+  spnvn.adminui:
+    description: "AdminUI System"
+    default: op
