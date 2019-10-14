@@ -112,11 +112,11 @@ class Main extends PluginBase implements Listener{
     public function onKick($sender){
         $api = $this->getServer()->getPluginManager()->getPlugin("FormAPI");
         $form = $api->createCustomForm(Function (Player $sender, $data){
-            $this->getServer()->dispatchCommand(new ConsoleCommandSender(), "kick ".$args[1]." ". $args[2]);
-            $this->kick->set($sender->getName(), ["Name" => $args[1], "Reason" => $args[2]]);
+            $this->getServer()->dispatchCommand(new ConsoleCommandSender(), "kick ".$data[1]." ". $data[2]);
+            $this->kick->set($sender->getName(), ["Name" => $data[1], "Reason" => $data[2]]);
             $this->kick->save();
             $this->createTask($sender);
-            $this->getServer()->broadcastMessage("§cAdmCmd: ".$args[1]." Bị kick bởi ".$sender->getName()." Reason: ". $args[2]);
+            $this->getServer()->broadcastMessage("§cAdmCmd: ".$data[1]." Bị kick bởi ".$sender->getName()." Reason: ". $data[2]);
         });
         $form->setTitle($this->tag);
         $form->addLabel("§c>> §a AdmCmd: Hãy Dùng nếu có múc đích Đúng!");
@@ -128,11 +128,11 @@ class Main extends PluginBase implements Listener{
     public function onBanned($sender){
         $api = $this->getServer()->getPluginManager()->getPlugin("FormAPI");
         $form = $api->createCustomForm(Function (Player $sender, $data){
-            $this->getServer()->dispatchCommand(new ConsoleeCommandSender(), "ban ".$args[1]." ". $args[2]);
-            $this->banned->set($sender->getName(), ["Name" => $args[1], "Reason" => $args[2]]);
+            $this->getServer()->dispatchCommand(new ConsoleeCommandSender(), "ban ".$data[1]." ". $data[2]);
+            $this->banned->set($sender->getName(), ["Name" => $data[1], "Reason" => $data[2]]);
             $this->banned->save();
             $this->createTask($sender);
-            $this->getServer()->broadcastMessage("§cAdmCmd: ".$args[1]." Bị Banned bởi ".$sender->getName()." Reason: ". $args[2]);
+            $this->getServer()->broadcastMessage("§cAdmCmd: ".$data[1]." Bị Banned bởi ".$sender->getName()." Reason: ". $data[2]);
         });
         $form->setTitle($this->tag);
         $form->addLabel("§c>> §a AdmCmd: Hãy Dùng nếu có múc đích Đúng!");

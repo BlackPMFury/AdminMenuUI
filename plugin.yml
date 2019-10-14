@@ -3,7 +3,7 @@ main: AdminMenu\Menu\Main
 api:
   - 3.0.0
   - 3.2.0
-version: 1.0-BETA
+version: 1.0.5
 author: BlackPMFury
 commands:
   adminui:
