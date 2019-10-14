@@ -5,6 +5,7 @@ namespace AdminMenu\Menu;
 use pocketmine\plugin\PluginBase;
 use pocketmine\command\Command;
 use pocketmine\command\CommandSender;
+use pocketmine\command\ConsoleCommandSender;
 use pocketmine\event\Listener;
 use pocketmine\utils\Config;
 use pocketmine\{Player, Server};
