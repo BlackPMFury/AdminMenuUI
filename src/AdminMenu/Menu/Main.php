@@ -105,6 +105,7 @@ class Main extends PluginBase implements Listener{
                 $form->addButton("§a Thoát", 3);
                 $form->sendToPlayer($sender);
         }
+        return true;
     }
 
     public function onKick($sender){
