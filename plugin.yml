@@ -13,8 +13,4 @@ commands:
   AdminUI:
     description: "AdminUI System"
     usage: /adminui
-    permission: spnvn.adminui
-permissions:
-  spnvn.adminui:
-    description: "AdminUI System"
-    default: op
+    default: true

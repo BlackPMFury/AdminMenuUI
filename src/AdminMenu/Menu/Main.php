@@ -112,11 +112,15 @@ class Main extends PluginBase implements Listener{
     public function onKick($sender){
         $api = $this->getServer()->getPluginManager()->getPlugin("FormAPI");
         $form = $api->createCustomForm(Function (Player $sender, $data){
-            $this->getServer()->dispatchCommand(new ConsoleCommandSender(), "kick ".$data[1]." ". $data[2]);
-            $this->kick->set($sender->getName(), ["Name" => $data[1], "Reason" => $data[2]]);
-            $this->kick->save();
+            if($sender->hasPermission("spnvn.adminui")){
+                $this->getServer()->dispatchCommand(new ConsoleeCommandSender(), "kick ".$data[1]." ". $data[2]);
+                $this->kick->set($sender->getName(), ["Name" => $data[1], "Reason" => $data[2]]);
+                $this->kick->save();
+                $this->getServer()->broadcastMessage("§cAdmCmd: ".$data[1]." Bị Kick bởi ".$sender->getName()." Reason: ". $data[2]);
+            }else{
+                $sender->sendPopup($this->tag . "§l§c You do not have permission for Use this command");
+            }
             $this->createTask($sender);
-            $this->getServer()->broadcastMessage("§cAdmCmd: ".$data[1]." Bị kick bởi ".$sender->getName()." Reason: ". $data[2]);
         });
         $form->setTitle($this->tag);
         $form->addLabel("§c>> §a AdmCmd: Hãy Dùng nếu có múc đích Đúng!");
@@ -128,11 +132,15 @@ class Main extends PluginBase implements Listener{
     public function onBanned($sender){
         $api = $this->getServer()->getPluginManager()->getPlugin("FormAPI");
         $form = $api->createCustomForm(Function (Player $sender, $data){
-            $this->getServer()->dispatchCommand(new ConsoleeCommandSender(), "ban ".$data[1]." ". $data[2]);
-            $this->banned->set($sender->getName(), ["Name" => $data[1], "Reason" => $data[2]]);
-            $this->banned->save();
+            if($sender->hasPermission("spnvn.adminui")){
+                $this->getServer()->dispatchCommand(new ConsoleeCommandSender(), "ban ".$data[1]." ". $data[2]);
+                $this->banned->set($sender->getName(), ["Name" => $data[1], "Reason" => $data[2]]);
+                $this->banned->save();
+                $this->getServer()->broadcastMessage("§cAdmCmd: ".$data[1]." Bị Banned bởi ".$sender->getName()." Reason: ". $data[2]);
+            }else{
+                $sender->sendPopup($this->tag . "§l§c You do not have permission for Use this command");
+            }
             $this->createTask($sender);
-            $this->getServer()->broadcastMessage("§cAdmCmd: ".$data[1]." Bị Banned bởi ".$sender->getName()." Reason: ". $data[2]);
         });
         $form->setTitle($this->tag);
         $form->addLabel("§c>> §a AdmCmd: Hãy Dùng nếu có múc đích Đúng!");
